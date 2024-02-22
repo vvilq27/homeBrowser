@@ -4,11 +4,11 @@ package com.example.olxSearch.dto;
 import java.util.List;
 import java.util.Objects;
 
-public class HomeDao {
-    public HomeDao() {
+public class HomeDto {
+    public HomeDto() {
     }
 
-    public HomeDao(String _id, long id, String url, String title, String last_refresh_time, String created_time, String valid_to_time, String pushup_time, String description, Promotion promotion, List<Parameter> params, List<String> key_params, boolean business, User user, String status, Contact contact, Map map, Location location, List<Photo> photos, Object partner, Category category, Delivery delivery, SafeDeal safedeal, Shop shop, String offer_type) {
+    public HomeDto(String _id, long id, String url, String title, String last_refresh_time, String created_time, String valid_to_time, String pushup_time, String description, Promotion promotion, List<Parameter> params, List<String> key_params, boolean business, User user, String status, Contact contact, Map map, Location location, List<Photo> photos, Object partner, Category category, Delivery delivery, SafeDeal safedeal, Shop shop, String offer_type) {
         this._id = _id;
         this.id = id;
         this.url = url;
@@ -266,7 +266,7 @@ public class HomeDao {
 
     @Override
     public String toString() {
-        return "AdvertisementDocument{" +
+        return "HomeDto{" +
                 "_id='" + _id + '\'' +
                 ", id=" + id +
                 ", url='" + url + '\'' +
@@ -290,7 +290,7 @@ public class HomeDao {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        HomeDao myClass = (HomeDao) o;
+        HomeDto myClass = (HomeDto) o;
         return id == myClass.id && Objects.equals(url, myClass.url);
     }
 
