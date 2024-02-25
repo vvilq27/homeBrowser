@@ -1,21 +1,21 @@
 package com.example.olxSearch.service;
 
+import com.example.olxSearch.dto.HomeDto;
 import com.example.olxSearch.entity.HomeDocument;
+import com.example.olxSearch.mapper.DtoToEntityMapper;
 import com.example.olxSearch.repository.HomeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class RepositoryService {
-//    @Autowired
-//    private MongoTemplate mongoTemplate;
-
     HomeRepository homeRepository;
-    public RepositoryService(HomeRepository homeRepository){
+    DtoToEntityMapper homeMapper;
+
+    public RepositoryService(HomeRepository homeRepository, DtoToEntityMapper homeMapper) {
         this.homeRepository = homeRepository;
+        this.homeMapper = homeMapper;
     }
 
     public void saveHome(HomeDocument home) {
@@ -24,5 +24,14 @@ public class RepositoryService {
 
     public void saveAllHomes(List<HomeDocument> homes) {
         homeRepository.insert(homes);
+    }
+
+    public List<HomeDto> getHomesByRegion(String regionName){
+        List<HomeDocument> homeEntities = homeRepository.findByRegionNormalizedName(regionName);
+        List<HomeDto> homeDtos = homeEntities.stream()
+                .map(entity -> homeMapper.mapToDto(entity))
+                .toList();
+
+        return homeDtos;
     }
 }

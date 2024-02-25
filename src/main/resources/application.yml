@@ -1,3 +1,0 @@
-regionUrls: >
-  https://www.olx.pl/api/v1/offers?offset=0&limit=40&category_id=15&region_id=6&filter_float_price%3Afrom=444&sort_by=filter_float_price%3Aasc,
-  https://www.olx.pl/api/v1/offers?offset=0&limit=40&category_id=15&region_id=13&filter_float_price%3Afrom=444&sort_by=filter_float_price%3Aasc

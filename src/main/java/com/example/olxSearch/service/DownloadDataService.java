@@ -77,7 +77,7 @@ public class DownloadDataService {
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
         ResponseEntity<String> response = restTemplate.exchange(
-//                "https://www.olx.pl/api/v1/offers?offset=0&limit=40&category_id=15&region_id=13",
+//                "localhost:9000/test",
                 regionUrls.getList().get(0),
                 HttpMethod.GET,
                 entity,
