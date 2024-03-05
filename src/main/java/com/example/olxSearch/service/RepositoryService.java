@@ -59,4 +59,11 @@ public class RepositoryService {
                 .as(String.class)
                 .all();
     }
+
+    public List<String> getAllExtractionDates(){
+        return mongoTemplate.query(HomeDocument.class)
+                .distinct("extractionDate")
+                .as(String.class)
+                .all();
+    }
 }

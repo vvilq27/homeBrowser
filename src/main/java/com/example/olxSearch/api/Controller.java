@@ -36,5 +36,10 @@ public class Controller {
     List<String> getAllAvailableRegions(){
         return repositoryService.getAvailableRegions();
     }
+
+    @GetMapping("/extractionDates")
+    List<String> getAllExtractionDates(){
+        return repositoryService.getAllExtractionDates();
+    }
 }
 
