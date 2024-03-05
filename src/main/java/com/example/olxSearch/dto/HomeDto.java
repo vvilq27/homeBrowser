@@ -8,7 +8,7 @@ public class HomeDto {
     public HomeDto() {
     }
 
-    public HomeDto(String _id, long id, String url, String title, String last_refresh_time, String created_time, String valid_to_time, String pushup_time, String description, Promotion promotion, List<Parameter> params, List<String> key_params, boolean business, User user, String status, Contact contact, Map map, Location location, List<Photo> photos, Object partner, Category category, Delivery delivery, SafeDeal safedeal, Shop shop, String offer_type) {
+    public HomeDto(String _id, long id, String url, String title, String last_refresh_time, String created_time, String valid_to_time, String pushup_time, String description, Promotion promotion, List<Parameter> params, List<String> key_params, boolean business, User user, String status, Contact contact, Map map, Location location, List<Photo> photos, Object partner, Category category, Delivery delivery, SafeDeal safedeal, Shop shop, String offer_type, String extractionDate) {
         this._id = _id;
         this.id = id;
         this.url = url;
@@ -34,6 +34,7 @@ public class HomeDto {
         this.safedeal = safedeal;
         this.shop = shop;
         this.offer_type = offer_type;
+        this.extractionDate = extractionDate;
     }
 
     private String _id;
@@ -61,6 +62,8 @@ public class HomeDto {
     private SafeDeal safedeal;
     private Shop shop;
     private String offer_type;
+
+    private String extractionDate;
 
     // getters and setters
 
@@ -262,6 +265,14 @@ public class HomeDto {
 
     public void setOffer_type(String offer_type) {
         this.offer_type = offer_type;
+    }
+
+    public String getExtractionDate() {
+        return extractionDate;
+    }
+
+    public void setExtractionDate(String extractionDate) {
+        this.extractionDate = extractionDate;
     }
 
     @Override
