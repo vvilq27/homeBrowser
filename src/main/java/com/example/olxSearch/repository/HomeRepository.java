@@ -16,4 +16,10 @@ public interface HomeRepository extends MongoRepository<HomeDocument, String> {
 
     @Query("{'location.region.normalized_name': ?0}")
     Page<HomeDocument> findByRegionNormalizedName(String regionNormalizedName, Pageable pageable);
+
+    @Query("{'location.region.normalized_name': ?0, 'extractionDate': ?1}")
+    Page<HomeDocument> findByRegionNormalizedNameAndExtractionDate(String regionNormalizedName, String extractionDate, Pageable pageable);
+
+    @Query(value = "{}, {'location.region.normalized_name' : 1}")
+    List<String> findDistinctNormalizedNames();
 }

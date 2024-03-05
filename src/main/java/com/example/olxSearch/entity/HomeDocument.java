@@ -11,7 +11,7 @@ public class HomeDocument {
     public HomeDocument() {
     }
 
-    public HomeDocument(long id, String url, String title, String last_refresh_time, String created_time, String valid_to_time, String pushup_time, String description, Promotion promotion, List<Parameter> params, List<String> key_params, boolean business, User user, String status, Contact contact, Map map, Location location, List<Photo> photos, Object partner, Category category, Delivery delivery, SafeDeal safedeal, Shop shop, String offer_type) {
+    public HomeDocument(long id, String url, String title, String last_refresh_time, String created_time, String valid_to_time, String pushup_time, String description, Promotion promotion, List<Parameter> params, List<String> key_params, boolean business, User user, String status, Contact contact, Map map, Location location, List<Photo> photos, Object partner, Category category, Delivery delivery, SafeDeal safedeal, Shop shop, String offer_type, String extractionDate) {
         this.id = id;
         this.url = url;
         this.title = title;
@@ -36,6 +36,7 @@ public class HomeDocument {
         this.safedeal = safedeal;
         this.shop = shop;
         this.offer_type = offer_type;
+        this.extractionDate = extractionDate;
     }
 
     @Id
@@ -64,6 +65,7 @@ public class HomeDocument {
     private SafeDeal safedeal;
     private Shop shop;
     private String offer_type;
+    private String extractionDate;
 
     // getters and setters
 
@@ -266,6 +268,14 @@ public class HomeDocument {
 
     public void setOffer_type(String offer_type) {
         this.offer_type = offer_type;
+    }
+
+    public String getExtractionDate() {
+        return extractionDate;
+    }
+
+    public void setExtractionDate(String extractionDate) {
+        this.extractionDate = extractionDate;
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.example.olxSearch.mapper.DtoToEntityMapper;
 import com.example.olxSearch.repository.HomeRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,9 +17,12 @@ public class RepositoryService {
     HomeRepository homeRepository;
     DtoToEntityMapper homeMapper;
 
-    public RepositoryService(HomeRepository homeRepository, DtoToEntityMapper homeMapper) {
+    MongoTemplate mongoTemplate;
+
+    public RepositoryService(HomeRepository homeRepository, DtoToEntityMapper homeMapper, MongoTemplate mongoTemplate) {
         this.homeRepository = homeRepository;
         this.homeMapper = homeMapper;
+        this.mongoTemplate = mongoTemplate;
     }
 
     public void saveHome(HomeDocument home) {
@@ -39,13 +43,20 @@ public class RepositoryService {
         return homeDtos;
     }
 
-    public Page<HomeDto> getHomesPageByRegion(String regionName, int page, int pageSize) {
+    public Page<HomeDto> getHomesPageByRegion(String regionName, String extractionDate, int page, int pageSize) {
         int offset = (page - 1) * pageSize;
         PageRequest pageRequest = PageRequest.of(page - 1, pageSize);
 
         Page<HomeDocument> homeDocumentsPage =
-                homeRepository.findByRegionNormalizedName(regionName, pageRequest);
+                homeRepository.findByRegionNormalizedNameAndExtractionDate(regionName, extractionDate, pageRequest);
 
         return homeDocumentsPage.map(homeMapper::mapToDto);
+    }
+
+    public List<String> getAvailableRegions(){
+        return mongoTemplate.query(HomeDocument.class)
+                .distinct("location.region.normalized_name")
+                .as(String.class)
+                .all();
     }
 }

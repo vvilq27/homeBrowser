@@ -57,5 +57,6 @@ public interface DtoToEntityMapper {
     @Mapping(target = "safedeal", source = "entity.safedeal")
     @Mapping(target = "shop", source = "entity.shop")
     @Mapping(target = "offer_type", source = "entity.offer_type")
+    @Mapping(target = "extractionDate", source = "entity.extractionDate")
     HomeDto mapToDto(HomeDocument entity);
 }

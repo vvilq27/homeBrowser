@@ -19,7 +19,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-@Service
+//@Service
 public class DownloadDataService {
 
     private final RestTemplate restTemplate;
